@@ -5,6 +5,18 @@
 #include <mutex>
 #include <vector>
 
+/*
+					Possible Scenarios of thread1 and thread2 and SpinlockAtomicFlag
+
+	1. Thread t gets the lock because the lock invocation was successful.The lock invocation is
+	successful if the initial value of the flag in line 11 is false.In this case thread t sets it in an
+	atomic operation to true.The value true is the value of the while loop returns to thread t2 if
+	it tries to get the lock.So thread t2 is caught in the rat race.Thread t2 cannot set the value of
+	the flag to false so that t2 must wait until thread t1 executes the unlock methodand sets the
+	flag to false (lines 14 - 16).
+	2. Thread t doesn’t get the lock.So we are in scenario 1 with swapped roles.
+*/
+
 class SpinlockAtomicFlag
 {
 	// set to false
