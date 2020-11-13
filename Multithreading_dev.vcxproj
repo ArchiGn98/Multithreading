@@ -34,11 +34,11 @@
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
     <ClInclude Include="src\MemoryModel.h" />
-    <ClInclude Include="src\MutexGlobal.h" />
+    <ClInclude Include="src\GlobalVars.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Atomics\Spinlock.cpp" />
-    <ClCompile Include="src\MutexGlobal.cpp" />
+    <ClCompile Include="src\GlobalVars.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

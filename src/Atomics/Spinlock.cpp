@@ -1,11 +1,10 @@
 #include "gtest/gtest.h"
+#include "../GlobalVars.h"
 
 #include <atomic>
 #include <thread>
 #include <mutex>
 #include <vector>
-
-#include "../MutexGlobal.h"
 
 /*
 					Possible Scenarios of thread1 and thread2 and SpinlockAtomicFlag
@@ -55,13 +54,13 @@ void mergeVectorsSpinlock(std::vector<int>& vec1, const std::vector<int>& vec2)
 // using mutex cpu high-load is not observed if sleap is active
 void mergeVectorsMutex(std::vector<int>& vec1, const std::vector<int>& vec2)
 {
-	g_mutex::mutex_Spinlock.lock();
+	g_mutex::spinlock.lock();
 	for (const auto& el : vec2)
 	{
 		vec1.push_back(el);
 	}
 	//std::this_thread::sleep_for(std::chrono::milliseconds(20000));
-	g_mutex::mutex_Spinlock.unlock();
+	g_mutex::spinlock.unlock();
 }
 
 void mergeVectors(std::vector<int>& vec1, const std::vector<int>& vec2)
