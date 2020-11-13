@@ -37,6 +37,7 @@
     <ClInclude Include="src\GlobalVars.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Atomics\AtomicConditionVariable.cpp" />
     <ClCompile Include="src\Atomics\Spinlock.cpp" />
     <ClCompile Include="src\GlobalVars.cpp" />
   </ItemGroup>
