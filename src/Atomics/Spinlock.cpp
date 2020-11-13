@@ -5,6 +5,8 @@
 #include <mutex>
 #include <vector>
 
+#include "../MutexGlobal.h"
+
 /*
 					Possible Scenarios of thread1 and thread2 and SpinlockAtomicFlag
 
@@ -36,7 +38,7 @@ public:
 };
 
 SpinlockAtomicFlag spin;
-std::mutex mut;
+
 
 // using our custom lock cpu load reaches to high level if sleap is active
 void mergeVectorsSpinlock(std::vector<int>& vec1, const std::vector<int>& vec2)
@@ -53,13 +55,13 @@ void mergeVectorsSpinlock(std::vector<int>& vec1, const std::vector<int>& vec2)
 // using mutex cpu high-load is not observed if sleap is active
 void mergeVectorsMutex(std::vector<int>& vec1, const std::vector<int>& vec2)
 {
-	mut.lock();
+	g_mutex::mutex_Spinlock.lock();
 	for (const auto& el : vec2)
 	{
 		vec1.push_back(el);
 	}
 	//std::this_thread::sleep_for(std::chrono::milliseconds(20000));
-	mut.unlock();
+	g_mutex::mutex_Spinlock.unlock();
 }
 
 void mergeVectors(std::vector<int>& vec1, const std::vector<int>& vec2)
