@@ -38,6 +38,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Atomics\AtomicConditionVariable.cpp" />
+    <ClCompile Include="src\Atomics\AtomicMultiplication.cpp" />
+    <ClCompile Include="src\Atomics\SharedPtr.cpp" />
     <ClCompile Include="src\Atomics\Spinlock.cpp" />
     <ClCompile Include="src\GlobalVars.cpp" />
   </ItemGroup>
